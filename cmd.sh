@@ -21,10 +21,10 @@ for url in `cat $list`
 do
     echo "正在下载: $url"
     sleep 1
-    # yt-dlp --config-location $basePath"/"yt-dlp.conf $url
-    sleep 10
+    yt-dlp --config-location $basePath"/"yt-dlp.conf $url
     sed -i "1,1d" $list
+    git pull
     git add $list
     git commit -m "$date complete a download $url"
-    git pull
+    git push
 done
