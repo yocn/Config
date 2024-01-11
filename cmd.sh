@@ -1,7 +1,3 @@
-# file="config-`date +%F[%T]`.txt"
-# touch $file
-# ls > "$file"
-# mv $file config/
 # yt-dlp "https://www.youtube.com/@AamchiMumbai/videos"
 # yt-dlp -f 'wv[height=1920][ext=webm]+ba[ext=m4a]' "https://www.youtube.com/watch?v=wKwl9DNHOqQ"
 
