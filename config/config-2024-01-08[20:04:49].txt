@@ -1,4 +1,0 @@
-cmd.sh
-config
-config-2024-01-08[20:04:49].txt
-switch
