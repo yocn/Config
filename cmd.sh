@@ -3,6 +3,8 @@
 # ls > "$file"
 # mv $file config/
 # yt-dlp "https://www.youtube.com/@AamchiMumbai/videos"
+# yt-dlp -f 'wv[height=1920][ext=webm]+ba[ext=m4a]' "https://www.youtube.com/watch?v=wKwl9DNHOqQ"
+
 basePath=`pwd`
 list=$basePath"/"list.txt
 date=`date +%F`
@@ -21,7 +23,7 @@ for url in `cat $list`
 do
     echo "正在下载: $url"
     sleep 1
-    yt-dlp --config-location $basePath"/"yt-dlp.conf $url
+    yt-dlp -f 'wv[height=1080][ext=webm]+ba[ext=m4a]' --config-location $basePath"/"yt-dlp.conf $url
     sed -i "1,1d" $list
     git pull
     git add $list
