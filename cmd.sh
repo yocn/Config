@@ -22,7 +22,7 @@ do
     yt-dlp -f 'wv[height=1920][ext=webm]+ba[ext=m4a]' --config-location $basePath"/"yt-dlp.conf $url
     sed -i "1,1d" $list
     git pull
-    git add $list
+    git add .
     git commit -m "$date complete a download $url"
     git push
 done
