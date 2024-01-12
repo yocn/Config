@@ -15,14 +15,18 @@ if [ $# -gt 0 ]; then
     fi
 fi
 
+mutexFile="/home/yocn/crontab/mutex"
+
 for url in `cat $list`
 do
-    echo "正在下载: $url"
-    sleep 1
-    yt-dlp -f 'wv[height=1920][ext=webm]+ba[ext=m4a]' --config-location $basePath"/"yt-dlp.conf $url
-    sed -i "1,1d" $list
-    git pull
-    git add .
-    git commit -m "$date complete a download $url"
-    git push
+    if [ -e "$mutexFile" ]; then
+        echo "正在下载: $url"
+        sleep 1
+        yt-dlp -f 'wv[height=1920][ext=webm]+ba[ext=m4a]' --config-location $basePath"/"yt-dlp.conf $url
+        sed -i "1,1d" $list
+        git pull
+        git add .
+        git commit -m "$date complete a download $url"
+        git push
+    fi
 done
