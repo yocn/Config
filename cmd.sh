@@ -2,16 +2,16 @@
 # yt-dlp -f 'wv[height=1920][ext=webm]+ba[ext=m4a]' "https://www.youtube.com/watch?v=wKwl9DNHOqQ"
 # https://www.youtube.com/watch?v=3_UrWv3hWe0
 
+folderName="@AamchiMumbai"
+
 basePath=`pwd`
 echo "开始执行cmd.sh-$basePath"
 list=$basePath"/"list.txt
-folderName="@AamchiMumbai"
 targetPath="/home/yocn/youtube/cron"
+mutexFile="/home/yocn/crontab/mutex"
 date=`date +%F`
 echo -o "\"$targetPath/$folderName/%(title)s-%(id)s.%(ext)s\"" > yt-dlp.conf
-
-conpleteListFile=$targetPath"/list.txt"
-
+conpleteListFile=$targetPath"/"$folderName"/list.txt"
 init=0
 videos="https://www.youtube.com/@AamchiMumbai/videos"
 
@@ -22,14 +22,13 @@ if [ $init -gt 0 ]; then
     fi
 fi
 
-mutexFile="/home/yocn/crontab/mutex"
-
 for url in `cat $list`
 do
     if [ -e "$mutexFile" ]; then
         echo "正在下载: $url"
         sleep 1
-        yt-dlp -f 'wv[height=256][ext=mp4]+ba[ext=m4a]' --config-location $basePath"/"yt-dlp.conf $url
+        yt-dlp -f 'wv[height=256][ext=mp4]' --config-location $basePath"/"yt-dlp.conf $url
+        # yt-dlp -f 'wv[height=1920][ext=mp4]+ba[ext=m4a]' --config-location $basePath"/"yt-dlp.conf $url
         echo "下载完成: $url"
         # 从list.txt中删除当前被下载的url
         sed -i "1,1d" $list
