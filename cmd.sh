@@ -18,7 +18,7 @@ fi
 init=0
 videos="https://www.youtube.com/@AamchiMumbai/videos"
 
-echo "------------------------------`date +%F` 开始新任务---------------------------------" >> $conpleteListFile
+echo "------------------------------`date` 开始新任务---------------------------------" >> $conpleteListFile
 
 if [ $init -gt 0 ]; then
     echo "执行init，获取所有视频列表。"
@@ -32,8 +32,9 @@ do
     if [ -e "$mutexFile" ]; then
         echo "正在下载: $url"
         sleep 1
-        yt-dlp -f 'wv[height=256][ext=mp4]' --config-location $basePath"/"yt-dlp.conf $url
-        # yt-dlp -f 'wv[height=1920][ext=mp4]+ba[ext=m4a]' --config-location $basePath"/"yt-dlp.conf $url
+        # yt-dlp  -f 'wv[height=256][ext=mp4]+wa[ext=m4a]/wv[width=256][ext=mp4]+wa[ext=m4a]' "https://www.youtube.com/watch?v=FKPtduSViSY"
+        # yt-dlp -f 'wv[height=256][ext=mp4]+wa[ext=m4a]' --config-location $basePath"/"yt-dlp.conf $url
+        yt-dlp -f 'wv[height=1920][ext=mp4]+ba[ext=m4a]' --config-location $basePath"/"yt-dlp.conf $url
         echo "下载完成: $url"
         # 从list.txt中删除当前被下载的url
         sed -i "1,1d" $list
