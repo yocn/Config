@@ -12,8 +12,13 @@ mutexFile="/home/yocn/crontab/mutex"
 date=`date +%F`
 echo -o "\"$targetPath/$folderName/%(title)s-%(id)s.%(ext)s\"" > yt-dlp.conf
 conpleteListFile=$targetPath"/"$folderName"/list.txt"
+if [ ! -e "$targetPath"/"$folderName" ]; then
+    mkdir $targetPath"/"$folderName
+fi
 init=0
 videos="https://www.youtube.com/@AamchiMumbai/videos"
+
+echo "------------------------------`date +%F` 开始新任务---------------------------------" >> $conpleteListFile
 
 if [ $init -gt 0 ]; then
     echo "执行init，获取所有视频列表。"
