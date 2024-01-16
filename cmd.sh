@@ -22,9 +22,9 @@ echo "------------------------------`date` 开始新任务----------------------
 
 if [ $init -gt 0 ]; then
     echo "执行init，获取所有视频列表。"
-    if [ $1 -eq 1 ]; then
+    
         yt-dlp --get-id --flat-playlist $videos | awk '{print "https://www.youtube.com/watch?v=" $0}' > $list
-    fi
+    
 fi
 
 for url in `cat $list`
