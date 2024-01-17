@@ -15,7 +15,7 @@ conpleteListFile=$targetPath"/"$folderName"/list.txt"
 if [ ! -e "$targetPath"/"$folderName" ]; then
     mkdir $targetPath"/"$folderName
 fi
-init=1
+init=0
 videos="https://www.youtube.com/@AamchiMumbai/videos"
 
 echo "------------------------------`date` 开始新任务---------------------------------" >> $conpleteListFile
