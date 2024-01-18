@@ -2,7 +2,7 @@
 # yt-dlp -f 'wv[height=1920][ext=webm]+ba[ext=m4a]' "https://www.youtube.com/watch?v=wKwl9DNHOqQ"
 # https://www.youtube.com/watch?v=3_UrWv3hWe0
 
-folderName="@AamchiMumbai"
+folderName="@Fail_Frenzy"
 
 basePath=`pwd`
 echo "开始执行cmd.sh-$basePath"
@@ -15,8 +15,8 @@ conpleteListFile=$targetPath"/"$folderName"/list.txt"
 if [ ! -e "$targetPath"/"$folderName" ]; then
     mkdir $targetPath"/"$folderName
 fi
-init=0
-videos="https://www.youtube.com/@AamchiMumbai/videos"
+init=1
+videos="https://www.youtube.com/@Fail_Frenzy/shorts"
 
 echo "------------------------------`date` 开始新任务---------------------------------" >> $conpleteListFile
 
@@ -34,7 +34,7 @@ do
         sleep 1
         # yt-dlp  -f 'wv[height=256][ext=mp4]+wa[ext=m4a]/wv[width=256][ext=mp4]+wa[ext=m4a]' "https://www.youtube.com/watch?v=FKPtduSViSY"
         # yt-dlp -f 'wv[height=256][ext=mp4]+wa[ext=m4a]' --config-location $basePath"/"yt-dlp.conf $url
-        yt-dlp -f 'wv[height=1080][ext=mp4]+wa[ext=m4a]' --config-location $basePath"/"yt-dlp.conf $url
+        yt-dlp -f 'bv[height=1280][ext=mp4]+ba[ext=m4a]' --config-location $basePath"/"yt-dlp.conf $url
         echo "下载完成: $url"
         # 从list.txt中删除当前被下载的url
         sed -i "1,1d" $list
