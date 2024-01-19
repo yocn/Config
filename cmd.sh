@@ -2,7 +2,7 @@
 # yt-dlp -f 'wv[height=1920][ext=webm]+ba[ext=m4a]' "https://www.youtube.com/watch?v=wKwl9DNHOqQ"
 # https://www.youtube.com/watch?v=3_UrWv3hWe0
 
-folderName="@Fail_Frenzy"
+folderName="@alegod-funnyanimals"
 
 basePath=`pwd`
 echo "开始执行cmd.sh-$basePath"
@@ -16,7 +16,7 @@ if [ ! -e "$targetPath"/"$folderName" ]; then
     mkdir $targetPath"/"$folderName
 fi
 init=1
-videos="https://www.youtube.com/@Fail_Frenzy/shorts"
+videos="https://www.youtube.com/@alegod-funnyanimals/shorts"
 
 echo "------------------------------`date` 开始新任务---------------------------------" >> $conpleteListFile
 
